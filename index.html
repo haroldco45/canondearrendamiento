@@ -1,1 +1,1188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ArriendoLegal CO — Guía de Arrendamiento Comercial</title>
+  <meta name="description" content="Guía legal actualizada sobre incrementos de canon de arrendamiento comercial en Colombia 2026. Calculadora IPC, normativa vigente y herramientas para arrendadores y arrendatarios." />
+  <meta name="theme-color" content="#0a2540" />
 
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+
+  <!-- Open Graph / WhatsApp Preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="ArriendoLegal CO — Arrendamiento Comercial Colombia 2026" />
+  <meta property="og:description" content="¿Cuánto puede subir el arriendo de tu local? Calcula el incremento legal, conoce la normativa y protege tu negocio." />
+  <meta property="og:url" content="https://arriendolegal.netlify.app" />
+  <meta property="og:image" content="icons/icon-512.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=IBM+Plex+Sans:wght@300;400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --navy: #0a2540;
+      --navy-mid: #0f3460;
+      --gold: #c9a84c;
+      --gold-light: #f0d080;
+      --cream: #f8f4ed;
+      --cream-dark: #ede8df;
+      --red: #c0392b;
+      --green: #1a7a4a;
+      --text: #1a1a2e;
+      --text-light: #5a6478;
+      --white: #ffffff;
+      --border: rgba(201,168,76,0.25);
+      --shadow: 0 8px 40px rgba(10,37,64,0.15);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--navy);
+      background-image: linear-gradient(135deg, #0a2540 60%, #0f3460 100%);
+      color: var(--white);
+      padding: 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      width: 38px; height: 38px;
+      background: var(--gold);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .logo-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.1;
+    }
+
+    .logo-text span {
+      font-size: 0.7rem;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      font-weight: 300;
+      display: block;
+    }
+
+    .clock-box {
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    #reloj {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--gold-light);
+      letter-spacing: 0.05em;
+    }
+
+    #fecha {
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(170deg, var(--navy) 0%, var(--navy-mid) 55%, #1a4a7a 100%);
+      color: var(--white);
+      padding: 36px 20px 44px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.06);
+      border: 1px solid rgba(201,168,76,0.15);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: -30px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.04);
+      border: 1px solid rgba(201,168,76,0.1);
+    }
+
+    .ipc-badge {
+      display: inline-block;
+      background: rgba(201,168,76,0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      padding: 5px 14px;
+      border-radius: 20px;
+      letter-spacing: 0.1em;
+      margin-bottom: 14px;
+    }
+
+    .hero h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .hero p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.75);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.6;
+      position: relative;
+    }
+
+    /* ── MAIN CONTENT ── */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 16px 40px;
+    }
+
+    /* ── TABS ── */
+    .tabs {
+      display: flex;
+      gap: 4px;
+      background: var(--navy);
+      padding: 6px;
+      border-radius: 0 0 14px 14px;
+      margin-bottom: 24px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .tab-btn {
+      flex: 1;
+      min-width: 90px;
+      padding: 9px 8px;
+      border: none;
+      border-radius: 8px;
+      background: transparent;
+      color: rgba(255,255,255,0.55);
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    .tab-btn.active {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .tab-btn:hover:not(.active) {
+      color: var(--white);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 22px 20px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-title .icon { font-size: 1.2rem; }
+
+    /* ── ALERT BOXES ── */
+    .alert {
+      padding: 14px 16px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      margin-bottom: 12px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .alert-navy { background: #e8f0fa; border-left: 4px solid var(--navy-mid); }
+    .alert-gold { background: #fdf8ec; border-left: 4px solid var(--gold); }
+    .alert-red { background: #fdf0ef; border-left: 4px solid var(--red); }
+    .alert-green { background: #edf8f2; border-left: 4px solid var(--green); }
+
+    .alert .ico { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
+
+    /* ── NORMA PILLS ── */
+    .norma-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .norma-pill {
+      background: var(--cream);
+      border: 1px solid var(--cream-dark);
+      border-radius: 10px;
+      padding: 14px 12px;
+      text-align: center;
+    }
+
+    .norma-pill .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+      display: block;
+    }
+
+    .norma-pill .desc {
+      font-size: 0.72rem;
+      color: var(--text-light);
+      line-height: 1.4;
+      margin-top: 3px;
+    }
+
+    /* ── TABLE ── */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+
+    .compare-table th {
+      background: var(--navy);
+      color: var(--gold-light);
+      padding: 10px 12px;
+      text-align: left;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .compare-table th:first-child { border-radius: 8px 0 0 0; }
+    .compare-table th:last-child { border-radius: 0 8px 0 0; }
+
+    .compare-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--cream-dark);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr:nth-child(even) td { background: var(--cream); }
+
+    .tag-yes { color: var(--green); font-weight: 700; }
+    .tag-no { color: var(--red); font-weight: 700; }
+    .tag-libre { color: var(--navy-mid); font-weight: 700; }
+
+    /* ── CALCULADORA ── */
+    .calc-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--navy);
+      letter-spacing: 0.04em;
+      margin-bottom: 5px;
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 11px 14px;
+      border: 2px solid var(--cream-dark);
+      border-radius: 8px;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text);
+      background: var(--white);
+      transition: border-color 0.2s;
+      appearance: none;
+    }
+
+    .form-group input:focus, .form-group select:focus {
+      outline: none;
+      border-color: var(--navy-mid);
+    }
+
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    .btn-calc {
+      width: 100%;
+      padding: 13px;
+      background: var(--navy);
+      color: var(--white);
+      border: none;
+      border-radius: 10px;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+      transition: background 0.2s, transform 0.1s;
+      margin-top: 4px;
+    }
+
+    .btn-calc:hover { background: var(--navy-mid); }
+    .btn-calc:active { transform: scale(0.98); }
+
+    .resultado {
+      display: none;
+      margin-top: 18px;
+    }
+
+    .resultado.show { display: block; }
+
+    .res-header {
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 10px 10px 0 0;
+      padding: 14px 16px;
+    }
+
+    .res-header .label { font-size: 0.72rem; opacity: 0.7; letter-spacing: 0.08em; }
+    .res-header .monto {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--gold-light);
+    }
+
+    .res-body {
+      background: var(--cream);
+      border-radius: 0 0 10px 10px;
+      padding: 14px 16px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .res-item .rl { font-size: 0.7rem; color: var(--text-light); }
+    .res-item .rv {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .res-legal {
+      margin-top: 12px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      line-height: 1.6;
+    }
+
+    /* ── PORCENTAJE BAR ── */
+    .porcentaje-bar-wrap { margin: 10px 0 4px; }
+    .porcentaje-bar-label {
+      display: flex; justify-content: space-between;
+      font-size: 0.72rem; color: var(--text-light); margin-bottom: 4px;
+    }
+    .porcentaje-bar-bg {
+      height: 8px; background: var(--cream-dark); border-radius: 4px; overflow: hidden;
+    }
+    .porcentaje-bar-fill {
+      height: 100%; border-radius: 4px;
+      background: linear-gradient(90deg, var(--green), var(--gold));
+      transition: width 0.5s ease;
+    }
+    .porcentaje-bar-fill.danger {
+      background: linear-gradient(90deg, var(--gold), var(--red));
+    }
+
+    /* ── PREGUNTAS FRECUENTES ── */
+    .faq-item {
+      border: 1px solid var(--cream-dark);
+      border-radius: 10px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+
+    .faq-q {
+      padding: 14px 16px;
+      background: var(--white);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: var(--navy);
+      gap: 10px;
+      user-select: none;
+    }
+
+    .faq-q .arrow {
+      font-size: 0.75rem;
+      transition: transform 0.25s;
+      flex-shrink: 0;
+      color: var(--gold);
+    }
+
+    .faq-item.open .faq-q .arrow { transform: rotate(180deg); }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.25s;
+      background: var(--cream);
+      font-size: 0.84rem;
+      line-height: 1.7;
+      color: var(--text);
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 400px;
+      padding: 14px 16px;
+    }
+
+    /* ── REGLA 10% ── */
+    .regla10-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .regla10-result {
+      display: none;
+      margin-top: 12px;
+    }
+
+    .regla10-result.show { display: block; }
+
+    .gauge-wrap {
+      text-align: center;
+      padding: 18px 0 8px;
+    }
+
+    .gauge-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .gauge-label { font-size: 0.8rem; color: var(--text-light); margin-top: 4px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 18px 20px;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      line-height: 1.7;
+    }
+
+    footer strong { color: var(--gold); }
+
+    /* ── INSTALL BANNER ── */
+    #install-banner {
+      display: none;
+      position: fixed;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--navy);
+      color: var(--white);
+      border: 1px solid var(--gold);
+      border-radius: 12px;
+      padding: 12px 18px;
+      font-size: 0.82rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+      z-index: 999;
+      max-width: calc(100vw - 32px);
+    }
+
+    #install-banner.visible { display: flex; }
+
+    #btn-install {
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      border-radius: 6px;
+      padding: 7px 14px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    #btn-dismiss {
+      background: transparent;
+      color: rgba(255,255,255,0.5);
+      border: none;
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: 0 2px;
+      flex-shrink: 0;
+    }
+
+    /* ── UTIL ── */
+    .divider {
+      height: 1px;
+      background: var(--cream-dark);
+      margin: 16px 0;
+    }
+
+    .text-sm { font-size: 0.82rem; line-height: 1.7; color: var(--text-light); }
+
+    @media (max-width: 500px) {
+      .hero h2 { font-size: 1.4rem; }
+      .norma-grid { grid-template-columns: 1fr; }
+      .row2 { grid-template-columns: 1fr; }
+      .res-body { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo-wrap">
+      <div class="logo-icon">⚖️</div>
+      <div class="logo-text">
+        <h1>ArriendoLegal CO</h1>
+        <span>ARRENDAMIENTO COMERCIAL · COLOMBIA</span>
+      </div>
+    </div>
+    <div class="clock-box">
+      <div id="reloj">--:--:--</div>
+      <div id="fecha">Colombia · UTC-5</div>
+    </div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="ipc-badge">📊 IPC 2025 · DANE: 5.10%</div>
+  <h2>Guía Legal de<br>Arrendamiento Comercial</h2>
+  <p>Conoce tus derechos, calcula el incremento real y toma decisiones con respaldo legal.</p>
+</div>
+
+<!-- TABS -->
+<div style="max-width:900px; margin:0 auto; padding:0 16px;">
+  <div class="tabs" id="tabsBar">
+    <button class="tab-btn active" data-tab="norma">📋 Normativa</button>
+    <button class="tab-btn" data-tab="calc">🧮 Calculadora</button>
+    <button class="tab-btn" data-tab="regla10">📈 Regla 10%</button>
+    <button class="tab-btn" data-tab="faq">❓ Preguntas</button>
+  </div>
+</div>
+
+<main>
+
+  <!-- ── PANEL NORMATIVA ── -->
+  <div class="tab-panel active" id="panel-norma">
+
+    <div class="card">
+      <div class="card-title"><span class="icon">🏛️</span> ¿Qué dice la ley en 2026?</div>
+
+      <div class="alert alert-navy">
+        <span class="ico">📌</span>
+        <div><strong>Para locales comerciales, NO existe tope legal.</strong> El incremento del canon se rige exclusivamente por lo que las partes pacten en el contrato. Así lo confirman el Código Civil (Art. 1602) y el Código de Comercio (Arts. 518–524).</div>
+      </div>
+
+      <div class="alert alert-gold">
+        <span class="ico">🏠</span>
+        <div><strong>Para vivienda urbana SÍ hay límite:</strong> máximo IPC del año anterior. Para 2026 ese tope es <strong>5.10%</strong> (Ley 820 de 2003, Art. 20). Este límite NO aplica a locales, bodegas u oficinas.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="icon">📚</span> Marco normativo vigente</div>
+      <div class="norma-grid">
+        <div class="norma-pill">
+          <span class="num">Ley 820/2003</span>
+          <div class="desc">Arrendamiento de <strong>vivienda urbana</strong>. Límite IPC. NO aplica a comercio.</div>
+        </div>
+        <div class="norma-pill">
+          <span class="num">Código Civil</span>
+          <div class="desc">Art. 1602: "El contrato es ley para las partes." Autonomía de la voluntad.</div>
+        </div>
+        <div class="norma-pill">
+          <span class="num">Cód. Comercio</span>
+          <div class="desc">Arts. 518–524: Regula arrendamiento de establecimientos de comercio. Silencio sobre topes de canon.</div>
+        </div>
+        <div class="norma-pill">
+          <span class="num">IPC 2025</span>
+          <div class="desc"><strong>5.10%</strong> · DANE, publicado el 8 de enero de 2026. Referencia para vivienda y contratos que lo pacten.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="icon">⚖️</span> Comparativo: Vivienda vs. Comercial</div>
+      <div style="overflow-x:auto;">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Aspecto</th>
+              <th>Vivienda</th>
+              <th>Local Comercial</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>¿Hay tope de incremento?</td>
+              <td><span class="tag-yes">✅ Sí</span></td>
+              <td><span class="tag-no">❌ No</span></td>
+            </tr>
+            <tr>
+              <td>Límite máximo</td>
+              <td>100% del IPC (5.10% en 2026)</td>
+              <td><span class="tag-libre">Libre acuerdo</span></td>
+            </tr>
+            <tr>
+              <td>¿IPC + puntos adicionales?</td>
+              <td>❌ Ilegal (supera el tope)</td>
+              <td>✅ Legal si está en el contrato</td>
+            </tr>
+            <tr>
+              <td>Norma aplicable</td>
+              <td>Ley 820 de 2003</td>
+              <td>Código Civil + Código de Comercio</td>
+            </tr>
+            <tr>
+              <td>¿Quién decide el monto?</td>
+              <td>La ley fija el techo</td>
+              <td>Las partes en el contrato</td>
+            </tr>
+            <tr>
+              <td>Sin pacto en el contrato</td>
+              <td>Se aplica IPC como tope</td>
+              <td>No hay obligación de incremento</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="icon">💡</span> Puntos clave para negociar</div>
+      <div class="alert alert-green">
+        <span class="ico">✅</span>
+        <div><strong>IPC + 3 puntos es completamente legal</strong> en un local comercial, siempre que esté pactado en el contrato. Al estar escrito, es ley entre las partes (Art. 1602 C.C.).</div>
+      </div>
+      <div class="alert alert-red">
+        <span class="ico">⚠️</span>
+        <div><strong>Sin cláusula escrita de incremento,</strong> el arrendatario NO está obligado a pagar aumentos durante la vigencia del contrato. El incremento solo sería aplicable en la renovación.</div>
+      </div>
+      <div class="alert alert-navy">
+        <span class="ico">📝</span>
+        <div>Cualquier modificación al canon debe ser <strong>pactada por escrito</strong> y notificada con antelación. Ninguna parte puede modificar el contrato unilateralmente.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="icon">📍</span> Factores que justifican un canon mayor</div>
+      <div class="text-sm">
+        Aunque no hay tope legal, el mercado y la viabilidad de tu negocio deben guiar la negociación. Estos factores impactan el valor del local:
+      </div>
+      <div class="divider"></div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:4px;">
+        <div class="alert alert-navy" style="margin:0; padding:10px 12px;">
+          <span class="ico">🏬</span><div style="font-size:0.8rem;"><strong>Centro comercial</strong><br>Flujo de visitantes garantizado</div>
+        </div>
+        <div class="alert alert-navy" style="margin:0; padding:10px 12px;">
+          <span class="ico">🍽️</span><div style="font-size:0.8rem;"><strong>Plazoleta de comidas</strong><br>Alta rotación, concepto gastronómico</div>
+        </div>
+        <div class="alert alert-navy" style="margin:0; padding:10px 12px;">
+          <span class="ico">📍</span><div style="font-size:0.8rem;"><strong>Ubicación estratégica</strong><br>Vía principal, esquina, zona comercial</div>
+        </div>
+        <div class="alert alert-navy" style="margin:0; padding:10px 12px;">
+          <span class="ico">👥</span><div style="font-size:0.8rem;"><strong>Público flotante</strong><br>Tráfico peatonal elevado</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── PANEL CALCULADORA ── -->
+  <div class="tab-panel" id="panel-calc">
+
+    <div class="card">
+      <div class="card-title"><span class="icon">🧮</span> Calculadora de Incremento</div>
+      <p class="text-sm" style="margin-bottom:16px;">Calcula el nuevo canon según el IPC, un porcentaje fijo, o IPC más puntos adicionales.</p>
+
+      <div class="calc-form">
+        <div class="form-group">
+          <label>CANON MENSUAL ACTUAL ($)</label>
+          <input type="number" id="canonActual" placeholder="Ej: 1500000" min="0" />
+        </div>
+
+        <div class="row2">
+          <div class="form-group">
+            <label>TIPO DE INCREMENTO</label>
+            <select id="tipoIncremento" onchange="toggleTipo()">
+              <option value="ipc">Solo IPC (5.10%)</option>
+              <option value="ipc_mas">IPC + puntos extra</option>
+              <option value="fijo">Porcentaje fijo</option>
+            </select>
+          </div>
+          <div class="form-group" id="extraGroup">
+            <label id="extraLabel">PUNTOS ADICIONALES (%)</label>
+            <input type="number" id="pctExtra" placeholder="Ej: 3" step="0.1" min="0" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>TIPO DE INMUEBLE</label>
+          <select id="tipoInmueble">
+            <option value="comercial">Local comercial / bodega / oficina</option>
+            <option value="vivienda">Vivienda urbana</option>
+          </select>
+        </div>
+
+        <button class="btn-calc" onclick="calcular()">⚡ CALCULAR NUEVO CANON</button>
+      </div>
+
+      <div class="resultado" id="resultado">
+        <div class="res-header">
+          <div class="label">NUEVO CANON MENSUAL</div>
+          <div class="monto" id="resMonto">$0</div>
+        </div>
+        <div class="res-body">
+          <div class="res-item">
+            <div class="rl">Canon actual</div>
+            <div class="rv" id="resActual">$0</div>
+          </div>
+          <div class="res-item">
+            <div class="rl">Incremento %</div>
+            <div class="rv" id="resPct">0%</div>
+          </div>
+          <div class="res-item">
+            <div class="rl">Valor del aumento</div>
+            <div class="rv" id="resAumento">$0</div>
+          </div>
+          <div class="res-item">
+            <div class="rl">Canon anual nuevo</div>
+            <div class="rv" id="resAnual">$0</div>
+          </div>
+        </div>
+
+        <div class="porcentaje-bar-wrap">
+          <div class="porcentaje-bar-label">
+            <span>0%</span>
+            <span id="barPct">0%</span>
+            <span>20%</span>
+          </div>
+          <div class="porcentaje-bar-bg">
+            <div class="porcentaje-bar-fill" id="barFill" style="width:0%"></div>
+          </div>
+        </div>
+
+        <div class="res-legal alert" id="resLegal" style="margin-top:10px;"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="icon">📅</span> IPC de referencia Colombia</div>
+      <div class="alert alert-navy">
+        <span class="ico">📊</span>
+        <div>
+          <strong>IPC 2025 (aplicado en 2026): 5.10%</strong><br>
+          <span style="font-size:0.8rem;color:var(--text-light);">Fuente: DANE, publicado 8 de enero de 2026. Este es el porcentaje máximo legal para vivienda urbana y el referente de mercado para locales comerciales.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── PANEL REGLA 10% ── -->
+  <div class="tab-panel" id="panel-regla10">
+
+    <div class="card">
+      <div class="card-title"><span class="icon">📈</span> La Regla del 10% de Ventas</div>
+      <div class="alert alert-gold">
+        <span class="ico">💡</span>
+        <div><strong>Regla de oro del comercio:</strong> el arriendo de tu local no debería superar el <strong>10% de tus ventas totales mensuales</strong>. Esta es tu base para negociar el canon, independientemente de lo que pida el arrendador.</div>
+      </div>
+      <p class="text-sm" style="margin-bottom:16px;">Usa esta herramienta para saber si el canon que pagas —o te proponen— es viable para tu negocio.</p>
+
+      <div class="regla10-form">
+        <div class="form-group">
+          <label>VENTAS MENSUALES PROMEDIO ($)</label>
+          <input type="number" id="ventas" placeholder="Ej: 15000000" min="0" />
+        </div>
+        <div class="form-group">
+          <label>CANON DE ARRENDAMIENTO MENSUAL ($)</label>
+          <input type="number" id="canonRegla" placeholder="Ej: 1200000" min="0" />
+        </div>
+        <button class="btn-calc" onclick="calcularRegla()">📊 ANALIZAR VIABILIDAD</button>
+      </div>
+
+      <div class="regla10-result" id="regla10-result">
+        <div class="divider"></div>
+        <div class="gauge-wrap">
+          <div class="gauge-num" id="gauge-pct" style="color:var(--navy)">0%</div>
+          <div class="gauge-label">del arriendo sobre tus ventas</div>
+        </div>
+
+        <div class="porcentaje-bar-wrap">
+          <div class="porcentaje-bar-label">
+            <span>0%</span>
+            <span id="r10barPct">0%</span>
+            <span>20%+</span>
+          </div>
+          <div class="porcentaje-bar-bg" style="height:12px;">
+            <div class="porcentaje-bar-fill" id="r10barFill" style="width:0%; height:12px;"></div>
+          </div>
+        </div>
+
+        <div class="alert" id="r10-alert" style="margin-top:14px;"></div>
+
+        <div style="margin-top:12px; display:grid; gap:8px;" id="r10-breakdown">
+          <!-- filled by JS -->
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="icon">⚖️</span> ¿Cuándo puedo pagar más del 10%?</div>
+      <div class="text-sm">La regla del 10% es una guía, no una ley. Hay situaciones en que un canon mayor puede ser justificable:</div>
+      <div class="divider"></div>
+      <div style="font-size:0.83rem; line-height:1.8; color:var(--text);">
+        <p>🏬 <strong>Centros comerciales:</strong> el tráfico garantizado puede justificar hasta 12–15%.</p>
+        <p>🍔 <strong>Plazoletas de comidas:</strong> alto volumen, margen por plato suele ser menor.</p>
+        <p>📍 <strong>Esquinas o vías principales:</strong> visibilidad que se traduce en ventas.</p>
+        <p>🚀 <strong>Negocio en crecimiento:</strong> si las ventas están subiendo, el % actual no refleja el futuro.</p>
+        <p>🏪 <strong>Negocio nuevo:</strong> en los primeros meses puede superar el 10%, normaliza con el tiempo.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── PANEL FAQ ── -->
+  <div class="tab-panel" id="panel-faq">
+
+    <div class="card">
+      <div class="card-title"><span class="icon">❓</span> Preguntas Frecuentes</div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">¿El IPC + 3 puntos es legal para un local comercial? <span class="arrow">▼</span></div>
+        <div class="faq-a">Sí, completamente legal. En locales comerciales no existe un tope de incremento establecido por ley. Si el contrato pacta "IPC + 3 puntos", eso es ley entre las partes (Art. 1602 del Código Civil). Para 2026 eso equivaldría a 5.10% + 3% = <strong>8.10%</strong> de incremento.</div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">¿La Ley 820 de 2003 aplica a mi local? <span class="arrow">▼</span></div>
+        <div class="faq-a">No. La Ley 820 de 2003 regula exclusivamente el arrendamiento de <strong>vivienda urbana</strong>. Los locales comerciales, bodegas, oficinas y otros inmuebles de uso no residencial se rigen por el Código Civil y el Código de Comercio, donde la autonomía de las partes es la regla.</div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">¿Qué pasa si el contrato no dice nada sobre el incremento? <span class="arrow">▼</span></div>
+        <div class="faq-a">Si el contrato guarda silencio, el arrendatario <strong>no está obligado a pagar aumentos</strong> durante la vigencia del contrato. El incremento solo se podría exigir al momento de renovar. Si no hay acuerdo en la renovación, cualquiera de las partes puede recurrir a un juez o simplemente no renovar.</div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">¿El arrendador puede subir el canon en cualquier momento? <span class="arrow">▼</span></div>
+        <div class="faq-a">No puede hacerlo unilateralmente durante la vigencia del contrato. Cualquier modificación del canon debe ser acordada por escrito entre las partes. Solo al momento de la renovación el arrendador puede proponer un nuevo valor, y si el arrendatario no acepta, puede no renovar el contrato.</div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">¿El IPC del 5.10% me obliga aunque tenga un local comercial? <span class="arrow">▼</span></div>
+        <div class="faq-a">Solo si tu contrato así lo pacta. El IPC es una referencia de mercado, pero <strong>no es obligatorio legalmente</strong> para inmuebles comerciales. Puede ser útil como punto de partida en la negociación, pero el arrendador podría pedir más o menos según lo acordado.</div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">¿Cuál es el porcentaje máximo de arriendo para no afectar mi negocio? <span class="arrow">▼</span></div>
+        <div class="faq-a">La regla general del comercio establece que el arriendo <strong>no debe superar el 10% de las ventas totales mensuales</strong>. Este no es un límite legal, sino una guía financiera. En centros comerciales o plazoletas de comidas puede llegar hasta 12–15%, dependiendo del margen del negocio.</div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">¿Me pueden desalojar si no acepto el incremento? <span class="arrow">▼</span></div>
+        <div class="faq-a">No de inmediato. Si el contrato está vigente y no has incumplido ninguna cláusula, el arrendador no puede desalojarte por negarte a pagar más de lo pactado. Sin embargo, al momento de la renovación puede condicionar la continuación del contrato a un nuevo precio. Si no hay acuerdo, el contrato no se renueva.</div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q">¿Qué hago si el arrendador me exige un aumento abusivo? <span class="arrow">▼</span></div>
+        <div class="faq-a">Primero revisa el contrato: si no hay cláusula de incremento, no estás obligado a pagar más durante la vigencia. Si hay negativa y el contrato está próximo a renovarse, puedes: 1) Negociar con fundamento en el IPC y la regla del 10%. 2) Consultar con un abogado. 3) Acudir a un Centro de Conciliación (trámite gratuito en algunas entidades). 4) Si hay incumplimiento contractual, acudir a la justicia ordinaria.</div>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <strong>ArriendoLegal CO</strong> · Información legal actualizada al 22 de mayo de 2026<br>
+  Fuentes: Ley 820/2003 · Código Civil Art. 1602 · Código de Comercio Arts. 518–524 · DANE IPC 2025<br>
+  Esta aplicación es informativa. Para casos específicos, consulte un abogado.<br><br>
+  Desarrollada por <strong>Vibras Positivas HM</strong> — Derechos de Autor Reservados
+</footer>
+
+<!-- Install Banner -->
+<div id="install-banner">
+  <span>📲</span>
+  <span>Instala esta app en tu dispositivo</span>
+  <button id="btn-install">Instalar</button>
+  <button id="btn-dismiss">✕</button>
+</div>
+
+<script>
+  // ── RELOJ COLOMBIA (UTC-5) ──
+  function updateClock() {
+    const now = new Date();
+    const col = new Date(now.toLocaleString('en-US', { timeZone: 'America/Bogota' }));
+    const h = String(col.getHours()).padStart(2,'0');
+    const m = String(col.getMinutes()).padStart(2,'0');
+    const s = String(col.getSeconds()).padStart(2,'0');
+    document.getElementById('reloj').textContent = `${h}:${m}:${s}`;
+
+    const dias = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+    const meses = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+    const dStr = `${dias[col.getDay()]} ${col.getDate()} ${meses[col.getMonth()]} ${col.getFullYear()}`;
+    document.getElementById('fecha').textContent = `${dStr} · Colombia`;
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+
+  // ── TABS ──
+  document.getElementById('tabsBar').addEventListener('click', e => {
+    const btn = e.target.closest('.tab-btn');
+    if (!btn) return;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+  });
+
+  // ── FAQ ──
+  function toggleFaq(el) {
+    el.classList.toggle('open');
+  }
+
+  // ── CALCULADORA ──
+  function toggleTipo() {
+    const tipo = document.getElementById('tipoIncremento').value;
+    const label = document.getElementById('extraLabel');
+    const group = document.getElementById('extraGroup');
+    const input = document.getElementById('pctExtra');
+
+    if (tipo === 'ipc') {
+      group.style.opacity = '0.4';
+      input.disabled = true;
+      input.placeholder = '—';
+    } else if (tipo === 'ipc_mas') {
+      group.style.opacity = '1';
+      input.disabled = false;
+      label.textContent = 'PUNTOS ADICIONALES (%)';
+      input.placeholder = 'Ej: 3';
+    } else {
+      group.style.opacity = '1';
+      input.disabled = false;
+      label.textContent = 'PORCENTAJE FIJO (%)';
+      input.placeholder = 'Ej: 8';
+    }
+  }
+  toggleTipo();
+
+  const IPC = 5.10;
+
+  function fmt(n) {
+    return '$' + Math.round(n).toLocaleString('es-CO');
+  }
+
+  function calcular() {
+    const canon = parseFloat(document.getElementById('canonActual').value);
+    if (!canon || canon <= 0) { alert('Ingresa el canon mensual actual.'); return; }
+
+    const tipo = document.getElementById('tipoIncremento').value;
+    const extra = parseFloat(document.getElementById('pctExtra').value) || 0;
+    const inmueble = document.getElementById('tipoInmueble').value;
+
+    let pct;
+    if (tipo === 'ipc') pct = IPC;
+    else if (tipo === 'ipc_mas') pct = IPC + extra;
+    else pct = extra;
+
+    const aumento = canon * (pct / 100);
+    const nuevo = canon + aumento;
+    const anual = nuevo * 12;
+
+    document.getElementById('resActual').textContent = fmt(canon);
+    document.getElementById('resMonto').textContent = fmt(nuevo);
+    document.getElementById('resPct').textContent = pct.toFixed(2) + '%';
+    document.getElementById('resAumento').textContent = fmt(aumento);
+    document.getElementById('resAnual').textContent = fmt(anual);
+
+    // barra (sobre 20%)
+    const barPct = Math.min((pct / 20) * 100, 100);
+    document.getElementById('barFill').style.width = barPct + '%';
+    document.getElementById('barPct').textContent = pct.toFixed(2) + '%';
+    const fill = document.getElementById('barFill');
+    fill.classList.toggle('danger', pct > 10);
+
+    // legal
+    const legal = document.getElementById('resLegal');
+    if (inmueble === 'vivienda') {
+      if (pct > IPC) {
+        legal.className = 'alert alert-red';
+        legal.innerHTML = `<span class="ico">⚠️</span><div><strong>Supera el tope legal para vivienda.</strong> La Ley 820/2003 limita el incremento al IPC (5.10%). Un aumento de ${pct.toFixed(2)}% sería ilegal para vivienda urbana.</div>`;
+      } else {
+        legal.className = 'alert alert-green';
+        legal.innerHTML = `<span class="ico">✅</span><div><strong>Incremento legal para vivienda urbana.</strong> No supera el IPC máximo del 5.10% establecido por la Ley 820/2003.</div>`;
+      }
+    } else {
+      if (tipo === 'ipc_mas') {
+        legal.className = 'alert alert-green';
+        legal.innerHTML = `<span class="ico">✅</span><div><strong>Legal para local comercial.</strong> IPC + ${extra} puntos = ${pct.toFixed(2)}%. Para inmuebles comerciales no hay tope legal. Si está pactado en el contrato, es plenamente válido (Art. 1602 C.C.).</div>`;
+      } else {
+        legal.className = 'alert alert-green';
+        legal.innerHTML = `<span class="ico">✅</span><div><strong>Legal para local comercial.</strong> El incremento de ${pct.toFixed(2)}% es válido si está pactado en el contrato. No existe tope legal para arrendamiento comercial en Colombia.</div>`;
+      }
+    }
+
+    document.getElementById('resultado').classList.add('show');
+  }
+
+  // ── REGLA 10% ──
+  function calcularRegla() {
+    const ventas = parseFloat(document.getElementById('ventas').value);
+    const canon = parseFloat(document.getElementById('canonRegla').value);
+    if (!ventas || !canon) { alert('Ingresa ventas y canon mensual.'); return; }
+
+    const pct = (canon / ventas) * 100;
+    const maxRecomendado = ventas * 0.10;
+    const diferencia = canon - maxRecomendado;
+
+    document.getElementById('gauge-pct').textContent = pct.toFixed(1) + '%';
+
+    const color = pct <= 10 ? 'var(--green)' : pct <= 15 ? 'var(--gold)' : 'var(--red)';
+    document.getElementById('gauge-pct').style.color = color;
+
+    // barra
+    const barPct = Math.min((pct / 20) * 100, 100);
+    document.getElementById('r10barFill').style.width = barPct + '%';
+    document.getElementById('r10barPct').textContent = pct.toFixed(1) + '%';
+    const r10fill = document.getElementById('r10barFill');
+    r10fill.classList.toggle('danger', pct > 10);
+
+    const alert = document.getElementById('r10-alert');
+    if (pct <= 10) {
+      alert.className = 'alert alert-green';
+      alert.innerHTML = `<span class="ico">✅</span><div><strong>Excelente.</strong> Tu arriendo representa el ${pct.toFixed(1)}% de tus ventas, por debajo del 10% recomendado. Tu negocio tiene buena salud financiera respecto al arrendamiento.</div>`;
+    } else if (pct <= 15) {
+      alert.className = 'alert alert-gold';
+      alert.innerHTML = `<span class="ico">⚠️</span><div><strong>Aceptable pero en zona de atención.</strong> Tu arriendo es el ${pct.toFixed(1)}% de las ventas. Supera la regla del 10%, lo que puede ser manejable en centros comerciales o negocios con alto margen.</div>`;
+    } else {
+      alert.className = 'alert alert-red';
+      alert.innerHTML = `<span class="ico">🚨</span><div><strong>Alto riesgo financiero.</strong> Tu arriendo representa el ${pct.toFixed(1)}% de las ventas. Esto puede comprometer seriamente la rentabilidad del negocio. Considera renegociar el canon.</div>`;
+    }
+
+    document.getElementById('r10-breakdown').innerHTML = `
+      <div class="alert alert-navy" style="margin:0;">
+        <span class="ico">📊</span>
+        <div style="font-size:0.82rem;">
+          <strong>Máximo recomendado (10%):</strong> ${fmt(maxRecomendado)}/mes<br>
+          <strong>Canon actual:</strong> ${fmt(canon)}/mes<br>
+          <strong>${diferencia > 0 ? 'Exceso sobre la regla:' : 'Margen disponible:'}</strong> ${fmt(Math.abs(diferencia))}/mes
+        </div>
+      </div>
+    `;
+
+    document.getElementById('regla10-result').classList.add('show');
+  }
+
+  // ── PWA INSTALL ──
+  let deferredPrompt;
+  window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault();
+    deferredPrompt = e;
+    setTimeout(() => {
+      document.getElementById('install-banner').classList.add('visible');
+    }, 3000);
+  });
+
+  document.getElementById('btn-install').addEventListener('click', async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      deferredPrompt = null;
+    }
+    document.getElementById('install-banner').classList.remove('visible');
+  });
+
+  document.getElementById('btn-dismiss').addEventListener('click', () => {
+    document.getElementById('install-banner').classList.remove('visible');
+  });
+
+  // ── SERVICE WORKER ──
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    });
+  }
+</script>
+</body>
+</html>
